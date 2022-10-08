@@ -1,0 +1,32 @@
+
+.button_wrapper {
+    height: 60%;
+    width: 70%;
+    margin: 0.5rem;
+    background: thistle;
+    font-size: 1.4rem;
+    border-radius: 1rem;
+    max-width: 100px;
+}
+
+.button_wrapper:disabled{
+    opacity: 0.5;
+}
+
+.error_button {
+    border: 2px solid red;
+    height: 60%;
+    width: 70%;
+    margin: 0.5rem;
+    background: thistle;
+    font-size: 1.4rem;
+}
+
+.button_wrapper:hover {
+    height: 60%;
+    width: 70%;
+    margin: 1rem;
+    background: aqua;
+    font-size: 1.4rem;
+    border-radius: 1rem;
+}

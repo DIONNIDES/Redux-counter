@@ -1,0 +1,46 @@
+.display_wrapper{
+    background: aqua;
+    width: 260px;
+    height: 140px;
+    border-radius: 1rem;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+
+.error_display{
+    background: aqua;
+    width: 260px;
+    height: 140px;
+    border-radius: 1rem;
+    color: red;
+    border: 2px solid red;
+    margin-top: 20px;
+    line-height: 140px;
+    vertical-align: center;
+}
+
+
+.display_wrapper p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.display_field{
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-gap: 1rem;
+}
+
+.display_wrapper input{
+    margin-top: 1rem;
+    margin-right: 10px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    border-radius: 0.4rem
+}
+
+.error_input{
+    border: 2px solid red;
+    color: red;
+}

@@ -1,0 +1,14 @@
+.counter_wrapper{
+    text-align: center;
+    margin: 100px auto;
+    background: darkslateblue;
+    border:1px solid black;
+    width: 300px;
+    height: 280px;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-rows: 1fr 120px;
+    align-items: center;
+    justify-items: center;
+    font-size: 6rem;
+}
