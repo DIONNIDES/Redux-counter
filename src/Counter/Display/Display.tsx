@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './Display.module.css';
-import {useSelector} from 'react-redux';
-import {AppRootStateType} from '../../redux/store';
-import {StateType} from '../../redux/counter-reducer';
 
 export type DisplayPropsType = {
+    maxCount: number
+    count: number
+    error: boolean
+    errorSettings: string | null
+    hint: string | null
 }
 
 
-export const Display = (props: DisplayPropsType) => {
-
-    let state = useSelector<AppRootStateType, StateType>(state => state.counter);
-    let {minCount,maxCount, count, error, errorSettings, hint, activeCounter} = state;
+export const Display = memo(({maxCount, count, error, errorSettings, hint}: DisplayPropsType) => {
+    console.log('Display');
 
     return (
         <div className={error || errorSettings ? styles.error_display : styles.display_wrapper}>
@@ -24,4 +24,4 @@ export const Display = (props: DisplayPropsType) => {
             }
         </div>
     );
-};
+});

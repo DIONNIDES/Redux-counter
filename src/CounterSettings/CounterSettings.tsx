@@ -1,13 +1,12 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './../Counter/Counter.module.css'
 import {ManageSettings} from './ManageSettings';
 import {DisplaySettings} from './DisplaySettings';
 
-export type CounterType = {
-}
+export type CounterType = {}
 
-export const CounterSettings = (props: CounterType) => {
-
+export const CounterSettings = memo((props: CounterType) => {
+    console.log('CounterSettings');
     return (
         <div className={styles.counter_wrapper}>
             <DisplaySettings/>
@@ -16,4 +15,4 @@ export const CounterSettings = (props: CounterType) => {
             />
         </div>
     );
-};
+});

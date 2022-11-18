@@ -1,15 +1,15 @@
 import styles from '../DisplaySettings.module.css';
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, memo} from 'react';
 
 type SuperInputPropsType = {
-    countLimit:number
-    callback:(value:number)=>void
-    finalClassName:string
+    countLimit: number
+    callback: (value: number) => void
+    finalClassName: string
 }
 
-export const SuperInput:React.FC<SuperInputPropsType> = ({countLimit,callback, finalClassName}) => {
-
-    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>) =>{
+export const SuperInput: React.FC<SuperInputPropsType> = memo(({countLimit, callback, finalClassName}) => {
+    console.log('SuperInput');
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         callback(Number(e.currentTarget.value))
     }
     return (
@@ -18,4 +18,4 @@ export const SuperInput:React.FC<SuperInputPropsType> = ({countLimit,callback, f
                                        className={finalClassName}/>
         </div>
     );
-};
+});

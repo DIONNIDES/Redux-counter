@@ -1,6 +1,3 @@
-import {useState} from 'react';
-import {AppRootStateType} from './store';
-
 const SET_MIN_COUNT = 'SET_MIN_COUNT';
 const SET_MAX_COUNT = 'SET_MAX_COUNT';
 const SET_COUNT = 'SET_COUNT';
@@ -26,18 +23,19 @@ type AllActionsType =
     | setHintACType
     | setActiveCounterACType
 
-export type StateType = typeof initialState;
-let initialState = {
-    minCount:0,
-    maxCount:0,
-    count:0,
-    error:false,
-    errorSettings:null,
-    hint:null,
-    activeCounter:false,
-}
+export type InitialStateType = typeof initialState;
 
-export const counterReducer = (state: StateType = initialState, action: AllActionsType) => {
+let initialState = {
+    minCount: 0,
+    maxCount: 0,
+    count: 0,
+    error: false,
+    errorSettings: null,
+    hint: null,
+    activeCounter: false,
+};
+
+export const counterReducer = (state: InitialStateType = initialState, action: AllActionsType) => {
     switch (action.type) {
         case SET_MIN_COUNT: {
             return {...state, minCount: action.payload.minCount}
@@ -128,3 +126,9 @@ export const setActiveCounterAC = (status: boolean) => {
         }
     } as const
 }
+
+// export const getCountLimitsTC = ():AppThunk => (dispatch) => {
+//     let stateFromLocalStorage:InitialStateType = loadState();
+//     dispatch(setMinCountAC(stateFromLocalStorage));
+//     dispatch(setMaxCountAC(stateFromLocalStorage.maxCount));
+// }

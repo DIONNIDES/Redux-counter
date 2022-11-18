@@ -1,24 +1,21 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './Button.module.css';
 
 export type ButtonPropsType = {
     name: string
     callBack: () => void
-    disabled:boolean
-    error?:boolean
+    disabled: boolean
+    error?: boolean
 
 }
 
-export const Button = (props: ButtonPropsType) => {
-
-    // const onClickHandler = () => {
-    //     props.callBack()
-    // }
+export const Button = memo((props: ButtonPropsType) => {
+    console.log('Button')
 
     return (
         <button
-            className={props.error ? styles.error_button :styles.button_wrapper}
-                disabled={props.disabled}
-                onClick={props.callBack}>{props.name}</button>
+            className={props.error ? styles.error_button : styles.button_wrapper}
+            disabled={props.disabled}
+            onClick={props.callBack}>{props.name}</button>
     );
-};
+});

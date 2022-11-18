@@ -1,53 +1,50 @@
-import React from 'react';
+import React, {memo, useCallback} from 'react';
 import styles from './Manage.module.css'
 import {Button} from './Buttons/Button';
-import {useDispatch, useSelector} from 'react-redux';
-import {
-    setActiveCounterAC, setCountAC,
-    setErrorAC,
-    setErrorSettingsAC,
-    setHintAC, setMaxCountAC,
-    setMinCountAC, StateType
-} from '../../redux/counter-reducer';
-import {AppRootStateType} from '../../redux/store';
+import {useDispatch} from 'react-redux';
+import {setActiveCounterAC, setCountAC, setErrorAC, setMaxCountAC, setMinCountAC} from '../../redux/counter-reducer';
 
 
 export type ManagePropsType = {
+    minCount:number
+    maxCount:number
+    count:number
+    error:boolean
+    errorSettings:string|null
+    hint:string|null
 }
-export const Manage = (props: ManagePropsType) => {
-
+export const Manage = memo(({minCount, maxCount, count, error, errorSettings, hint}: ManagePropsType) => {
+    console.log('Manage');
     const dispatch = useDispatch();
-    let state = useSelector<AppRootStateType, StateType>(state => state.counter)
-    let {minCount,maxCount, count, error, errorSettings, hint, activeCounter} = state
 
     let income = 'INC';
     let reset = 'reset';
     let set = 'set';
 
-    const incrementCount = () => {
+    const incrementCount = useCallback(() => {
 
         const newCountValue = count + 1;
         if (newCountValue === maxCount) {
             dispatch(setCountAC(newCountValue))
             dispatch(setErrorAC(true));
 
+        } else {
+            dispatch(setCountAC(newCountValue));
         }
-        else {
-            dispatch(setCountAC(newCountValue));}
-    }
+    }, [dispatch, count]);
 
-    const cleanCount = () => {
+    const cleanCount = useCallback(() => {
         dispatch(setCountAC(minCount))
         dispatch(setErrorAC(false))
-    }
+    }, [dispatch, minCount]);
 
 
-    const setActiveCounter = () => {
+    const setActiveCounter = useCallback(() => {
         dispatch(setMinCountAC(minCount))
         dispatch(setCountAC(minCount))
         dispatch(setMaxCountAC(maxCount))
         dispatch(setActiveCounterAC(true))
-    }
+    }, [dispatch, minCount, maxCount]);
 
     return (
         <div className={styles.manage_wrapper}>
@@ -59,4 +56,4 @@ export const Manage = (props: ManagePropsType) => {
                     callBack={setActiveCounter}/>
         </div>
     );
-};
+});
